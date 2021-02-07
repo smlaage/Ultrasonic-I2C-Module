@@ -2,6 +2,13 @@
 A module comprising 5 ultrasonic distance sensors and I2C interface
 
 This is an experimental module housing 5 ultrasonic distances sensors (HC-SR04) on one board. The sensors are managed by a dedicated ATMega328 which continuously reads the distance measures and makes them available via I2C to a connected host system (typically an Arduino or a Raspberry Pi). The module is intended to support autonomous model cars to find their way without collisions. 
+
+The repository incldues:
+- KiCad files with curcuit diagram and PCB layout
+- Source code fpr the ATmega328P, developed with ATmel study 7
+- Arduino library files including examples
+- Fotos
+
 Technical details:
 -	5 sensors of type HC-SR04 mounted in different directions (typically (0) left, (1) front left, (2) center front, (3) front right, and (4) right)
 -	ATmega238 running at 8 MHZ. The ATmega continuously reads the measurements from all 5 sensors and converts them to approximate mm values. It also runs an I2C slave and makes data available to any host system.
@@ -9,6 +16,8 @@ Technical details:
 -	Power: 5V, approximately 30 mA
 
 I2C Interface description:
+
+I2C address: 0x5A (solder jumper open) or 0x5B (solder jumper closed)
 
 Register 0 to 4: returns the distance measurements in mm (16 bit) assigned to the corresponding sensor.
 
