@@ -32,4 +32,4 @@ Command tokes are submitted as lower nibble. Data for the settings aresubmitted 
     - Mode 2 sequence: (1) front left -> (3) front right
     - Mode 3 sequence: (2) center front
 
-Docs: http://laagewitt.de/ultrasonic-modul-mit-i2c-interface/
+Docs: https://laagewitt.de/ultrasonic-modul-mit-i2c-interface/
