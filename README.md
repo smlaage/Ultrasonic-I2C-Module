@@ -1,5 +1,5 @@
 # Ultrasonic-I2C-Module
-A module comprising 5 ultrasonic distance sensors and I2C interface
+A module comprising 5 ultrasonic distance sensors and I2C interface.
 
 This is an experimental module housing 5 ultrasonic distances sensors (HC-SR04) on one board. The sensors are managed by a dedicated ATMega328 which continuously reads the distance measures and makes them available via I2C to a connected host system (typically an Arduino or a Raspberry Pi). The module is intended to support autonomous model cars to find their way without collisions. 
 
@@ -31,3 +31,5 @@ Command tokes are submitted as lower nibble. Data for the settings aresubmitted 
     - Mode 1 sequence: (0) left -> (2) center front -> (4) right
     - Mode 2 sequence: (1) front left -> (3) front right
     - Mode 3 sequence: (2) center front
+
+Docs: http://laagewitt.de/ultrasonic-modul-mit-i2c-interface/
