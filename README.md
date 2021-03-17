@@ -19,15 +19,15 @@ I2C Interface description:
 
 I2C address: 0x5A (solder jumper open) or 0x5B (solder jumper closed)
 
-Register 0 to 4: returns the distance measurements in mm (16 bit) assigned to the corresponding sensor.
+Register 0 to 4: returns the distance measurements assigned to the corresponding sensor in mm (16 bit).
 
-Register 10 (sensor active): expects an 8 bit value stopping (value == 0) or starting (value > 0) the measurements 
-
-Register 11 (delay time): expects an 8 bit value specifying the time between triggering the sensors, in 10 ms. Default value is 4 (= 40 ms). Smaller values give higher speed, however run the risk of overlapping signals. Maximum is 50. The value is stored in non-volatile memory and preserved beyond power off.
-
-Register 12 (run mode): expects an 8 bit value specifying the run mode. The run mode toggles different settings for the reading of the sensors. The value is stored in non-volatile memory and preserved beyond power off.
-Run mode 0 sequence: (0) left -> (2) center front -> (4) right -> (1) front left -> (3) front right.
-Run mode 1 sequence: (0) left -> (2) center front -> (4) right
-Run mode 2 sequence: (1) front left -> (3) front right
-Run mode 3 sequence: (2) center front
-
+Command tokes are submitted as lower nibble. Data for the settings aresubmitted as upper nibble:
+- Register 8 (get_mode): returns the current mode (8 bit)
+- Register 9 (get_cycle_time): returns the current cycle time (8 bit)
+- Register 10 (set_status): stops (upper nibble == 0) or starts (upper nibble > ) the measurements 
+- Register 11 (cycle time): specifies the time between triggering the sensors, in 10 ms (upper nibble range 1 to 15). Default value is 3 (= 30 ms). Smaller values give higher speed, however run the risk of overlapping signals. Maximum is 15 (= 150 ms). The value is stored in non-volatile memory and preserved beyond power off.
+- Register 12 (mode): Sets the run mode, toggles different settings for the reading of the sensors (upper nibble values 9 ... 3). The value is stored in non-volatile memory and preserved beyond power off.
+    - Mode 0 sequence: (0) left -> (2) center front -> (4) right -> (1) front left -> (3) front right.
+    - Mode 1 sequence: (0) left -> (2) center front -> (4) right
+    - Mode 2 sequence: (1) front left -> (3) front right
+    - Mode 3 sequence: (2) center front
